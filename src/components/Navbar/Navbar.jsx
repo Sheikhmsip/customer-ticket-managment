@@ -12,7 +12,7 @@ const Navbar = () => {
     <li><a>Download</a></li>
     <li><a>Contact</a></li></>
   return (
-    <div className='bg-white text-black'>
+    <div className=' bg-white text-black'>
       <div className="navbar shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
