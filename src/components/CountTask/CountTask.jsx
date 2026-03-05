@@ -2,8 +2,8 @@ import React from 'react';
 import vactor from '../../assets/vector1.png'
 const CountTask = () => {
     return (
-        <div className='w-10/12 mx-auto flex justify-between items-center mt-5 gap-5 text-center'>
-            <div className='relative w-1/2 overflow-hidden rounded-lg bg-gradient-to-r from-[#632EE3] to-[#9F62F2] py-24 text-white'>
+        <div className='md:w-10/12 mx-auto flex justify-between items-center mt-5 gap-5 text-center px-2'>
+            <div className='relative w-1/2 overflow-hidden rounded-lg bg-gradient-to-r from-[#632EE3] to-[#9F62F2] md:py-28 py-20 text-white'>
                 <img
                     src={vactor}
                     className='absolute top-0 left-0 w-1/2 h-full opacity-80  pointer-events-none'
@@ -18,7 +18,7 @@ const CountTask = () => {
                 </div>
 
             </div>
-            <div className='relative w-1/2 overflow-hidden rounded-lg bg-gradient-to-r from-[#54CF68] to-[#00827A] py-24 text-white'>
+            <div className='relative w-1/2 overflow-hidden rounded-lg bg-gradient-to-r from-[#54CF68] to-[#00827A] md:py-28 py-20 text-white'>
                 <img
                     src={vactor}
                     className='absolute top-0 left-0 w-1/2 h-full opacity-80  pointer-events-none'
