@@ -4,23 +4,19 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Fotter'
 import CustomerTicket from './components/CustomerTicket/CustomerTicket'
 import { Suspense, useState } from 'react'
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const fatchTickets = async () => {
-  try {
     const response = await fetch('/tickets.json');
     const data = await response.json();
     return data;
-  } catch (error) {
-    console.error('Error fetching tickets:', error);
-    throw error;
-  }
 };
 
 function App() {
 
   const ticketsPromise = fatchTickets();
-
   const [inProgressTasks, setInProgressTasks] = useState([]);
   const [resolvedTasks, setResolvedTasks] = useState([]);
 
@@ -28,12 +24,16 @@ function App() {
     const exists = inProgressTasks.find(t => t.id === ticket.id);
   if (!exists) {
     setInProgressTasks([...inProgressTasks, ticket]);
+    toast.success("Ticket added to In-Progress");
+  }else {
+    toast.warning("Ticket already added to In-Progress");
   }
   };
 
    const handleCompleteTask = (ticket) => {
     setInProgressTasks(inProgressTasks.filter(t => t.id !== ticket.id));
     setResolvedTasks([...resolvedTasks, ticket]);
+    toast.success("Ticket successfully Resolved");
   };
 
  
@@ -44,7 +44,9 @@ function App() {
       inProgressTasks={inProgressTasks}
       resolvedTasks={resolvedTasks}
       ></CountTask>
-      <Suspense fallback={<div className='text-center text-2xl text-[#34485A] font-semibold'>Loading Tickets...</div>}>
+      <Suspense fallback={<div className="flex items-center justify-center h-64">
+      <div className="w-20 bg-red-500 loading loading-infinity loading-xl"></div>
+    </div>}>
 
         <CustomerTicket 
         ticketsPromise={ticketsPromise}
@@ -56,7 +58,9 @@ function App() {
       </Suspense>
 
       <Footer></Footer>
+      <ToastContainer position="top-center" autoClose={2000} />
     </div>
+    
   )
 }
 

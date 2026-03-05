@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TaskStatus = ({ inProgressTasks, handleCompleteTask, resolvedTasks }) => {
-    console.log(inProgressTasks);
+    // console.log(inProgressTasks);
     return (
         <div className='md:w-[25%] w-full'>
             {/* Task Status */}
