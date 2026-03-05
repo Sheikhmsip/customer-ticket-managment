@@ -3,7 +3,7 @@ import CountTask from './components/CountTask/CountTask'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Fotter'
 import CustomerTicket from './components/CustomerTicket/CustomerTicket'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 
 
 const fatchTickets = async () => {
@@ -20,15 +20,27 @@ const fatchTickets = async () => {
 function App() {
 
   const ticketsPromise = fatchTickets();
+
+  const [inProgressTasks, setInProgressTasks] = useState([]);
+
+    const handleAddTask = (ticket) => {
+    setInProgressTasks([...inProgressTasks, ticket]);
+  };
+ 
   return (
     <div className='bg-white w-full'>
       <Navbar></Navbar>
-      <CountTask></CountTask>
+      <CountTask 
+      inProgressTasks={inProgressTasks}
+      ></CountTask>
       <Suspense fallback={<div className='text-center text-2xl text-[#34485A] font-semibold'>Loading Tickets...</div>}>
 
-        <CustomerTicket ticketsPromise={ticketsPromise}></CustomerTicket>
+        <CustomerTicket ticketsPromise={ticketsPromise}
+        handleAddTask={handleAddTask}
+        inProgressTasks={inProgressTasks}
+        ></CustomerTicket>
       </Suspense>
-     
+
       <Footer></Footer>
     </div>
   )
