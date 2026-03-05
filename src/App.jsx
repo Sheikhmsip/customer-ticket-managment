@@ -3,7 +3,7 @@ import CountTask from './components/CountTask/CountTask'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Fotter'
 import CustomerTicket from './components/CustomerTicket/CustomerTicket'
-import { Suspense, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -15,15 +15,24 @@ const fatchTickets = async () => {
 };
 
 function App() {
+const [tickets, setTickets] = useState([]);
 
-  const ticketsPromise = fatchTickets();
+  // const ticketsPromise = fatchTickets();
   const [inProgressTasks, setInProgressTasks] = useState([]);
   const [resolvedTasks, setResolvedTasks] = useState([]);
 
+useEffect(() => {
+  fatchTickets().then(data => setTickets(data));
+}, []);
     const handleAddTask = (ticket) => {
     const exists = inProgressTasks.find(t => t.id === ticket.id);
   if (!exists) {
     setInProgressTasks([...inProgressTasks, ticket]);
+     const updatedTickets = tickets.map(t =>
+      t.id === ticket.id ? { ...t, status: "In Progress" } : t
+    );
+    setTickets(updatedTickets);
+
     toast.success("Ticket added to In-Progress");
   }else {
     toast.warning("Ticket already added to In-Progress");
@@ -49,7 +58,8 @@ function App() {
     </div>}>
 
         <CustomerTicket 
-        ticketsPromise={ticketsPromise}
+        tickets={tickets}
+        
         handleAddTask={handleAddTask}
         inProgressTasks={inProgressTasks}
         handleCompleteTask={handleCompleteTask}
