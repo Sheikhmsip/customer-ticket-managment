@@ -22,22 +22,36 @@ function App() {
   const ticketsPromise = fatchTickets();
 
   const [inProgressTasks, setInProgressTasks] = useState([]);
+  const [resolvedTasks, setResolvedTasks] = useState([]);
 
     const handleAddTask = (ticket) => {
+    const exists = inProgressTasks.find(t => t.id === ticket.id);
+  if (!exists) {
     setInProgressTasks([...inProgressTasks, ticket]);
+  }
   };
+
+   const handleCompleteTask = (ticket) => {
+    setInProgressTasks(inProgressTasks.filter(t => t.id !== ticket.id));
+    setResolvedTasks([...resolvedTasks, ticket]);
+  };
+
  
   return (
     <div className='bg-white w-full'>
       <Navbar></Navbar>
       <CountTask 
       inProgressTasks={inProgressTasks}
+      resolvedTasks={resolvedTasks}
       ></CountTask>
       <Suspense fallback={<div className='text-center text-2xl text-[#34485A] font-semibold'>Loading Tickets...</div>}>
 
-        <CustomerTicket ticketsPromise={ticketsPromise}
+        <CustomerTicket 
+        ticketsPromise={ticketsPromise}
         handleAddTask={handleAddTask}
         inProgressTasks={inProgressTasks}
+        handleCompleteTask={handleCompleteTask}
+        resolvedTasks={resolvedTasks}
         ></CustomerTicket>
       </Suspense>
 

@@ -4,14 +4,15 @@ import { FiCalendar } from 'react-icons/fi';
 
 const CustomerTicketCard = ({ tickets, handleAddTask }) => {
   return (
-    <div className='md:w-[80%] mx-auto'>
+    <div className='md:w-[75%] mx-auto'>
       <h1 className='text-[#34485A] font-semibold text-2xl'>Customer Tickets</h1>
 
-      <div className="py-10 grid gap-6 lg:grid-cols-2">
+      <div className="py-5 grid gap-6 lg:grid-cols-2">
 
         {/* ticket card */}
 
-        {tickets.map(ticket=> <div key={ticket.id} onClick={()=> handleAddTask(ticket)} className="bg-gray-100 rounded-lg shadow p-5 cursor-pointer">
+        {tickets.map(ticket=> <div key={ticket.id} onClick={()=> {handleAddTask(ticket)
+          }} className="bg-gray-100 rounded-lg shadow p-5 cursor-pointer">
           <div className="flex justify-between items-start">
             <h3 className="text-lg font-medium text-[#001931]">
               {ticket.title}
