@@ -56,7 +56,7 @@ const Fotter = () => {
                             </li>
                             <li className="flex items-center gap-2"> <FaLinkedinIn></FaLinkedinIn> @Ticket Management </li>
                             <li className="flex items-center gap-2"><FaFacebook></FaFacebook> @Ticket Management</li>
-                            <li className="flex items-center gap-2"><FaEnvelope></FaEnvelope> support@ticketmanagement.com</li>
+                            <li className="flex items-center gap-1"><FaEnvelope></FaEnvelope>support@ticket management.com</li>
                         </ul>
                     </div>
 
