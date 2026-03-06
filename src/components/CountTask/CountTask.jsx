@@ -12,7 +12,7 @@ const CountTask = ({ inProgressTasks, resolvedTasks }) => {
                     src={vactor}
                     className='absolute top-0 right-0 w-1/2 h-full transform -scale-x-100 opacity-80 pl pointer-events-none'
                 />
-                <div className='relative z-10'>
+                <div className='relative'>
                     <h3 className='text-2xl'>In-Progress</h3>
                     <p className='text-6xl font-semibold'>{inProgressTasks.length}</p>
                 </div>

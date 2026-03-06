@@ -5,8 +5,8 @@ const TaskStatus = ({ inProgressTasks, handleCompleteTask, resolvedTasks }) => {
     return (
         <div className='md:w-[25%] w-full'>
             {/* Task Status */}
-            <div>
-                <h1 className='text-[#34485A] font-semibold text-2xl px-1'>Task Status</h1>
+            <div className='px-1'>
+                <h1 className='text-[#34485A] font-semibold text-2xl '>Task Status</h1>
 
                 {inProgressTasks.length === 0 ? (
                     <p className='text-[#627382] text-base mt-2'>Select a ticket to add to Task Status</p>
@@ -27,7 +27,7 @@ const TaskStatus = ({ inProgressTasks, handleCompleteTask, resolvedTasks }) => {
             </div>
 
             {/* Resolved tasks */}
-            <div className='mt-4'>
+            <div className='mt-4 px-1'>
                 <h2 className='text-[#34485A] font-semibold text-2xl mt-2'>Resolved</h2>
                 {resolvedTasks.length === 0 ? (
                     <p className='text-[#627382] text-base mt-2'>No resolved tasks yet.</p>
