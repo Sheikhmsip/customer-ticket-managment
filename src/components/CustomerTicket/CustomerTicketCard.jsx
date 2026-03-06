@@ -11,15 +11,20 @@ const CustomerTicketCard = ({ tickets, handleAddTask }) => {
 
         {/* ticket card */}
 
-        {tickets.map(ticket=> <div key={ticket.id} onClick={()=> {handleAddTask(ticket)
-          }} className="bg-gray-100 rounded-lg shadow p-5 cursor-pointer">
+        {tickets.map(ticket => <div key={ticket.id} onClick={() => {
+          handleAddTask(ticket)
+        }} className="bg-gray-100 rounded-lg shadow p-5 cursor-pointer">
           <div className="flex justify-between items-start">
             <h3 className="text-lg font-medium text-[#001931]">
               {ticket.title}
             </h3>
-            <span className={`text-base  px-3 py-1 rounded-full font-medium flex items-center gap-2 ${ticket.status==="Open"? "bg-[#B9F8CF] text-[#0B5E06]" : "bg-[#F8F3B9] text-[#9C7700]"}`}>
-              <FaCircle color={`${ticket.status === "Open" ? "#02A53B": "FEBB0C"}`}></FaCircle>
-             {ticket.status}
+            <span className={`text-base  px-3 py-1 rounded-full font-medium flex items-center gap-2 ${ticket.status === "Open" ? "bg-[#B9F8CF] text-[#0B5E06]" : ticket.status === "In Progress" ? "bg-[#F8F3B9] text-[#9C7700]" : "bg-blue-300 text-[#FFFFFF]"}`}>
+              <FaCircle color={`${ticket.status === "Open"
+                ? "#02A53B"
+                : ticket.status === "In Progress"
+                  ? "#FEBB0C"
+                  : "#FFFFFF"}`}></FaCircle>
+              {ticket.status}
             </span>
           </div>
 

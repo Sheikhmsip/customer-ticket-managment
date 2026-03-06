@@ -21,7 +21,7 @@
     "id": "#1003",
     "title": "Unable to Download Invoice",
     "description": "Customer cannot download their January invoice from the billing section. The download button is not responding.",
-    "status": "In Progress",
+    "status": "Open",
     "priority": "Medium",
     "customer": "Michael Brown",
     "date": "2024-01-17"
@@ -48,7 +48,7 @@
     "id": "#1006",
     "title": "Refund Not Processed",
     "description": "Customer requested a refund two weeks ago but has not received the amount yet.",
-    "status": "In Progress",
+    "status": "Open",
     "priority": "Medium",
     "customer": "Sophia Taylor",
     "date": "2024-01-20"
@@ -75,7 +75,7 @@
     "id": "#1009",
     "title": "Subscription Auto-Renewal",
     "description": "Customer wants to enable auto-renewal for their subscription but the toggle is disabled.",
-    "status": "In Progress",
+    "status": "Open",
     "priority": "Medium",
     "customer": "Liam Thomas",
     "date": "2024-01-23"
